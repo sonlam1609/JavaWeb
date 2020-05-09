@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Users" table="users" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="userID" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="userpass" type="string">
+            <column name="userpass" not-null="true" />
+        </property>
+        <property name="gioitinh" type="string">
+            <column name="gioitinh" />
+        </property>
+        <property name="diachi" type="string">
+            <column name="diachi" />
+        </property>
+        <property name="nhomquyen" type="java.lang.Integer">
+            <column name="nhomquyen" />
+        </property>
+        <property name="sdt" type="string">
+            <column name="sdt" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <set name="bills" table="Bill" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="userID" />
+            </key>
+            <one-to-many class="shoes.entity.Bill" />
+        </set>
+    </class>
+</hibernate-mapping>

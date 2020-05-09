@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Company" table="company" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="companyId" type="int">
+            <column name="companyId" />
+            <generator class="identity" />
+        </id>
+        <property name="companyName" type="string">
+            <column name="companyName" />
+        </property>
+        <property name="addr" type="string">
+            <column name="addr" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="40" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

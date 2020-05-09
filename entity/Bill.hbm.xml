@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Bill" table="Bill" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="billId" type="int">
+            <column name="BillID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="shoes.entity.Users" fetch="select">
+            <column name="userID" />
+        </many-to-one>
+        <property name="created" type="timestamp">
+            <column name="created" length="23" not-null="true" />
+        </property>
+        <property name="totalaman" type="java.lang.Double">
+            <column name="totalaman" precision="53" scale="0" />
+        </property>
+        <set name="billretails" table="Billretail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="BillID" />
+            </key>
+            <one-to-many class="shoes.entity.Billretail" />
+        </set>
+    </class>
+</hibernate-mapping>

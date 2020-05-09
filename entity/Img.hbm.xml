@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Img" table="img" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="imgId" type="int">
+            <column name="imgId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="shoes.entity.Product" fetch="select">
+            <column name="ProductID" />
+        </many-to-one>
+        <many-to-one name="slide" class="shoes.entity.Slide" fetch="select">
+            <column name="slideID" />
+        </many-to-one>
+        <property name="imgName" type="string">
+            <column name="imgName" />
+        </property>
+        <property name="imglink" type="string">
+            <column name="imglink" />
+        </property>
+    </class>
+</hibernate-mapping>

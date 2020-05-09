@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Product" table="product" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="productId" type="int">
+            <column name="ProductID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorios" class="shoes.entity.Categorios" fetch="select">
+            <column name="CatID" />
+        </many-to-one>
+        <many-to-one name="color" class="shoes.entity.Color" fetch="select">
+            <column name="colorId" />
+        </many-to-one>
+        <many-to-one name="size" class="shoes.entity.Size" fetch="select">
+            <column name="sizeId" />
+        </many-to-one>
+        <property name="productName" type="string">
+            <column name="ProductName" not-null="true" />
+        </property>
+        <property name="materia" type="string">
+            <column name="Materia" not-null="true" />
+        </property>
+        <property name="price" type="double">
+            <column name="Price" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="buy" type="java.lang.Integer">
+            <column name="Buy" />
+        </property>
+        <property name="productView" type="java.lang.Integer">
+            <column name="ProductView" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="discount" type="java.lang.Integer">
+            <column name="Discount" />
+        </property>
+        <property name="productDescription" type="string">
+            <column name="ProductDescription" />
+        </property>
+        <property name="imgLink" type="string">
+            <column name="ImgLink" />
+        </property>
+        <set name="billretails" table="Billretail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="productID" />
+            </key>
+            <one-to-many class="shoes.entity.Billretail" />
+        </set>
+        <set name="imgs" table="img" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProductID" />
+            </key>
+            <one-to-many class="shoes.entity.Img" />
+        </set>
+    </class>
+</hibernate-mapping>

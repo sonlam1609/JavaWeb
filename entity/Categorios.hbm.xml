@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 2, 2019 5:01:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="shoes.entity.Categorios" table="Categorios" schema="dbo" catalog="shopshoes" optimistic-lock="version">
+        <id name="catId" type="int">
+            <column name="CatID" />
+            <generator class="identity" />
+        </id>
+        <property name="catName" type="string">
+            <column name="CatName" not-null="true" />
+        </property>
+        <set name="products" table="product" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="CatID" />
+            </key>
+            <one-to-many class="shoes.entity.Product" />
+        </set>
+    </class>
+</hibernate-mapping>
